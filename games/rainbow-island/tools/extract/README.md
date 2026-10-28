@@ -1,5 +1,10 @@
 # Extraction of the original game
 
+These tools grew into **[dsk2jumphp](https://github.com/davidnurdin/dsk2jumphp)**: the same emulator made
+generic (ROM boot, EXTENDED images, typed text...), more tools, the method documented, and this extraction as
+its example `examples/rainbow-islands/` (it gives the same assets byte for byte). Use dsk2jumphp for another
+game; this folder keeps the version that built this game.
+
 Everything in `assets/` comes from the Amstrad CPC disc of the original (not stored in this repository),
 through a small CPC emulator written for this purpose: the game is really run, and its memory is read
 once it has built each round.
