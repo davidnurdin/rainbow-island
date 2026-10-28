@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Rainbow Islands CPC jouable en ligne – le remake en PHP, gratuit dans le navigateur</title>
+	<meta name="description" content="Jouez gratuitement à Rainbow Islands version Amstrad CPC dans votre navigateur : 7 îles, 28 rounds, les boss, les arcs-en-ciel et la musique d'origine, refaits en PHP avec JumPHP. Clavier, manette ou écran tactile." />
+	<link rel="canonical" href="https://{{DOMAIN}}/" />
+	<meta name="robots" content="index, follow, max-image-preview:large" />
+	<meta name="theme-color" content="#1a3c8c" />
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="fr_FR" />
+	<meta property="og:site_name" content="Rainbow Islands CPC" />
+	<meta property="og:title" content="Rainbow Islands (Amstrad CPC) – jouable en ligne" />
+	<meta property="og:description" content="Le Rainbow Islands du CPC refait en PHP, avec ses graphismes et sa musique d'origine : 7 îles, 28 rounds, gratuit dans le navigateur." />
+	<meta property="og:url" content="https://{{DOMAIN}}/" />
+	<meta property="og:image" content="https://{{DOMAIN}}/images/og.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="L'écran de chargement de Rainbow Islands sur Amstrad CPC, entre quatre arcs-en-ciel" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Rainbow Islands (Amstrad CPC) – jouable en ligne" />
+	<meta name="twitter:description" content="7 îles, 28 rounds, les boss et la musique d'origine, dans le navigateur." />
+	<meta name="twitter:image" content="https://{{DOMAIN}}/images/og.png" />
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "VideoGame",
+				"@id": "https://{{DOMAIN}}/#game",
+				"name": "Rainbow Islands (Amstrad CPC) – remake en PHP",
+				"alternateName": "Rainbow Islands CPC",
+				"url": "https://{{DOMAIN}}/",
+				"image": "https://{{DOMAIN}}/images/og.png",
+				"screenshot": [
+					"https://{{DOMAIN}}/images/round-1.png",
+					"https://{{DOMAIN}}/images/round-10.png",
+					"https://{{DOMAIN}}/images/boss-28.png"
+				],
+				"description": "Remake jouable dans le navigateur de la version Amstrad CPC de Rainbow Islands : 7 îles, 28 rounds, boss, arcs-en-ciel, montée des eaux, avec les graphismes et la musique d'origine.",
+				"genre": ["Plates-formes", "Arcade", "Rétro"],
+				"gamePlatform": ["Navigateur web", "Ordinateur", "Mobile"],
+				"applicationCategory": "Game",
+				"operatingSystem": "Tout navigateur récent",
+				"playMode": "SinglePlayer",
+				"numberOfPlayers": {"@type": "QuantitativeValue", "value": 1},
+				"inLanguage": "en",
+				"isAccessibleForFree": true,
+				"offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR", "availability": "https://schema.org/InStock"},
+				"codeRepository": "https://github.com/davidnurdin/rainbow-island",
+				"potentialAction": {"@type": "PlayAction", "target": "https://{{DOMAIN}}/play/"}
+			},
+			{
+				"@type": "FAQPage",
+				"mainEntity": [
+					{"@type": "Question", "name": "Faut-il installer quelque chose pour jouer ?",
+					 "acceptedAnswer": {"@type": "Answer", "text": "Non : le jeu tourne dans le navigateur, sur ordinateur comme sur téléphone. Le premier chargement télécharge environ 10 Mo, ensuite tout est en cache."}},
+					{"@type": "Question", "name": "Comment joue-t-on ?",
+					 "acceptedAnswer": {"@type": "Answer", "text": "Flèches pour marcher, Haut ou Z pour sauter, Espace ou X pour lancer un arc-en-ciel, P ou Échap pour la pause. Une manette marche aussi ; sur téléphone, un joystick apparaît sous le pouce gauche."}},
+					{"@type": "Question", "name": "Est-ce le jeu d'origine ?",
+					 "acceptedAnswer": {"@type": "Answer", "text": "C'est un remake : le programme est réécrit en PHP, mais les cartes, les sprites, la police, l'écran de chargement, les musiques et les bruitages viennent de la disquette Amstrad CPC de 1989."}}
+				]
+			}
+		]
+	}
+	</script>
+
+	<style>
+		:root {
+			--sky: #1a3c8c;
+			--sky-deep: #0b1840;
+			--ink: #f4f1e8;
+			--muted: #b9c3e6;
+			--panel: #10265e;
+			--line: #2d4fa8;
+			--yellow: #ffd23f;
+			--red: #e8382f;
+			--cyan: #3fd0ff;
+			--rainbow: linear-gradient(90deg, #c4161c, #f26a1b, #ffd23f, #3fbf3f, #1f8fff, #6a2fd0, #b02fb0);
+		}
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body {
+			margin: 0;
+			background: var(--sky-deep);
+			background-image: linear-gradient(180deg, var(--sky) 0, var(--sky-deep) 900px);
+			color: var(--ink);
+			font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+		}
+		img { image-rendering: pixelated; image-rendering: crisp-edges; max-width: 100%; height: auto; display: block; }
+		a { color: var(--yellow); }
+		.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+		.pixel { font-family: ui-monospace, "Cascadia Mono", "DejaVu Sans Mono", Menlo, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+		.stripe { height: 8px; background: var(--rainbow); }
+
+		header.hero { padding: 40px 0 56px; text-align: center; }
+		.hero .arc { width: 192px; margin: 0 auto 8px; }
+		.hero h1 { font-size: clamp(30px, 6vw, 58px); line-height: 1.1; margin: 0; color: var(--yellow); text-shadow: 4px 4px 0 var(--red); }
+		.hero .sub { margin: 14px auto 0; max-width: 680px; font-size: clamp(17px, 2.2vw, 20px); color: var(--ink); }
+		.cta { display: inline-block; margin-top: 28px; padding: 18px 34px; background: var(--yellow); color: #1a1a1a; text-decoration: none; font-weight: 800; font-size: 22px; border: 4px solid #1a1a1a; box-shadow: 6px 6px 0 var(--red); transition: transform .08s; }
+		.cta:hover, .cta:focus-visible { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--red); }
+		.hero .note { margin-top: 14px; font-size: 14px; color: var(--muted); }
+		.hero .screen { margin: 40px auto 0; width: 100%; max-width: 768px; border: 6px solid #000; box-shadow: 0 0 0 4px var(--line), 0 20px 50px rgba(0, 0, 0, .5); }
+
+		section { padding: 56px 0; }
+		section + section { border-top: 2px solid var(--line); }
+		h2 { font-size: clamp(22px, 3.4vw, 32px); margin: 0 0 18px; color: var(--yellow); }
+		h3 { margin: 0 0 6px; font-size: 18px; color: var(--cyan); }
+		p { margin: 0 0 14px; }
+		.lead { color: var(--muted); max-width: 760px; }
+
+		.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+		figure { margin: 0; background: #000; border: 4px solid #000; box-shadow: 0 0 0 3px var(--line); }
+		figcaption { background: var(--panel); padding: 8px 12px; font-size: 14px; color: var(--muted); }
+		figcaption b { color: var(--ink); }
+
+		.cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
+		.card { background: var(--panel); border: 3px solid var(--line); padding: 18px; }
+		kbd { display: inline-block; min-width: 1.8em; padding: 1px 7px; background: var(--ink); color: #111; border-radius: 3px; border-bottom: 3px solid #888; font: 600 14px/1.5 ui-monospace, monospace; text-align: center; }
+
+		.split { display: grid; gap: 32px; grid-template-columns: 1fr 1fr; align-items: center; }
+		@media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
+
+		details { background: var(--panel); border: 3px solid var(--line); padding: 14px 18px; margin-bottom: 12px; }
+		summary { cursor: pointer; font-weight: 700; }
+		details p { margin: 10px 0 0; color: var(--muted); }
+
+		footer { padding: 32px 0 48px; font-size: 14px; color: var(--muted); text-align: center; }
+		footer p { margin: 6px 0; }
+	</style>
+</head>
+<body>
+	<div class="stripe"></div>
+
+	<header class="hero">
+		<div class="wrap">
+			<img class="arc" src="images/rainbow.png" width="192" height="128" alt="" />
+			<h1 class="pixel">Rainbow Islands</h1>
+			<p class="sub">Le Rainbow Islands de l'<strong>Amstrad CPC</strong> (1989), refait en PHP et jouable
+				gratuitement dans le navigateur, avec <strong>ses graphismes et sa musique d'origine</strong>.</p>
+			<a class="cta pixel" href="play/?back=../">▶ Jouer</a>
+			<p class="note">Ordinateur, téléphone ou manette · rien à installer · sans inscription</p>
+			<img class="screen" src="images/round-1.png" width="512" height="352"
+				alt="Bub sur la première île, entre les tours du château, un arc-en-ciel lancé devant lui" />
+		</div>
+	</header>
+
+	<main>
+		<section id="jeu">
+			<div class="wrap split">
+				<div>
+					<h2>Monter avant que l'eau ne monte</h2>
+					<p>Bub doit grimper jusqu'au panneau <b>G</b> en haut de chaque round, pendant que la mer monte
+						derrière lui. Son arme : des <strong>arcs-en-ciel</strong>. Ils assomment les ennemis, servent
+						de passerelles et d'escaliers, et en retombant dessus après un saut, on les casse : ils
+						tombent et changent les ennemis écrasés en diamants.</p>
+					<p><strong>7 îles, 28 rounds</strong>, un boss à la fin de chaque île, les fruits, les bonus,
+						l'alerte <em>HURRY!</em>, l'écran de continue et la fin du jeu.</p>
+				</div>
+				<figure>
+					<img src="images/loading.png" width="640" height="400" loading="lazy"
+						alt="L'écran de chargement d'origine de Rainbow Islands sur Amstrad CPC" />
+					<figcaption><b>L'écran de chargement</b> de la disquette de 1989, tel quel.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section id="iles">
+			<div class="wrap">
+				<h2>Les sept îles</h2>
+				<p class="lead">Chaque île a ses couleurs, ses ennemis et son boss. Captures du jeu tel qu'il tourne
+					dans le navigateur.</p>
+				<div class="grid">
+					<figure><img src="images/round-1.png" width="512" height="352" loading="lazy" alt="Round 1, Insect Island : le château et ses drapeaux" /><figcaption><b>Insect Island</b> · round 1</figcaption></figure>
+					<figure><img src="images/round-6.png" width="512" height="352" loading="lazy" alt="Round 6, Combat Island : des blocs roses sur fond orange, deux arcs-en-ciel" /><figcaption><b>Combat Island</b> · round 6</figcaption></figure>
+					<figure><img src="images/round-10.png" width="512" height="352" loading="lazy" alt="Round 10, Monster Island : une maison hantée dans la nuit" /><figcaption><b>Monster Island</b> · round 10</figcaption></figure>
+					<figure><img src="images/round-15.png" width="512" height="352" loading="lazy" alt="Round 15, Toy Island : des dés et des cartes à jouer dans le ciel" /><figcaption><b>Toy Island</b> · round 15</figcaption></figure>
+					<figure><img src="images/round-19.png" width="512" height="352" loading="lazy" alt="Round 19, Doh's Island : des briques de casse-briques" /><figcaption><b>Doh's Island</b> · round 19</figcaption></figure>
+					<figure><img src="images/round-26.png" width="512" height="352" loading="lazy" alt="Round 26, Dragon Island : un mur de briques rouges" /><figcaption><b>Dragon Island</b> · round 26</figcaption></figure>
+					<figure><img src="images/boss-4.png" width="512" height="352" loading="lazy" alt="Le boss de la première île, une araignée géante" /><figcaption><b>Le premier boss</b> · round 4</figcaption></figure>
+					<figure><img src="images/boss-28.png" width="512" height="352" loading="lazy" alt="Le dragon, dernier boss du jeu" /><figcaption><b>Le dernier boss</b> · round 28</figcaption></figure>
+				</div>
+			</div>
+		</section>
+
+		<section id="commandes">
+			<div class="wrap">
+				<h2>Commandes</h2>
+				<div class="cards">
+					<div class="card">
+						<h3>Clavier</h3>
+						<p><kbd>←</kbd> <kbd>→</kbd> marcher<br />
+							<kbd>↑</kbd> ou <kbd>Z</kbd> sauter<br />
+							<kbd>Espace</kbd> ou <kbd>X</kbd> arc-en-ciel<br />
+							<kbd>P</kbd> ou <kbd>Échap</kbd> pause</p>
+					</div>
+					<div class="card">
+						<h3>Manette</h3>
+						<p>Stick ou croix pour marcher, <b>A</b> pour sauter, <b>X</b> ou <b>B</b> pour l'arc-en-ciel,
+							<b>Start</b> pour la pause. Branchez-la avant ou pendant la partie.</p>
+					</div>
+					<div class="card">
+						<h3>Téléphone</h3>
+						<p>Un joystick apparaît sous le pouce gauche, n'importe où sur la moitié gauche de l'écran ;
+							à droite, les boutons <b>JUMP</b> et <b>RAINBOW</b>. Tenez le téléphone à l'horizontale.</p>
+					</div>
+				</div>
+				<p style="margin-top: 28px; text-align: center"><a class="cta pixel" href="play/?back=../">▶ Jouer maintenant</a></p>
+			</div>
+		</section>
+
+		<section id="remake">
+			<div class="wrap split">
+				<div>
+					<h2>Comment ce remake a été fait</h2>
+					<p>Rien n'a été redessiné : la disquette d'origine a tourné dans un <strong>émulateur Amstrad
+						CPC</strong> sans écran, qui a noté chaque écriture en mémoire et chaque note jouée. Les
+						cartes des 28 rounds, les tuiles, les sprites, la police, les palettes, les musiques et les
+						bruitages en ont été extraits.</p>
+					<p>Le jeu est ensuite réécrit en <strong>PHP</strong>, lisible, avec le moteur
+						<a href="https://github.com/davidnurdin/jumPhp">JumPHP</a> : le même code tourne dans une
+						fenêtre sur ordinateur et dans le navigateur, où PHP est compilé en
+						<strong>WebAssembly</strong>.</p>
+					<p>Les outils d'extraction sont publiés dans
+						<a href="https://github.com/davidnurdin/dsk2jumphp">dsk2jumphp</a>, et le code du jeu dans
+						<a href="https://github.com/davidnurdin/rainbow-island">rainbow-island</a>.</p>
+				</div>
+				<figure>
+					<img src="images/title.png" width="512" height="352" loading="lazy"
+						alt="L'écran titre avec la police d'origine du CPC" />
+					<figcaption><b>L'écran titre</b>, avec la police du CPC extraite de la disquette.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section id="questions">
+			<div class="wrap">
+				<h2>Questions</h2>
+				<details>
+					<summary>Faut-il installer quelque chose ?</summary>
+					<p>Non : le jeu tourne dans le navigateur, sur ordinateur comme sur téléphone. Le premier chargement
+						télécharge environ 10 Mo (PHP en WebAssembly et le jeu), ensuite tout est en cache.</p>
+				</details>
+				<details>
+					<summary>Est-ce le jeu d'origine ?</summary>
+					<p>C'est un remake : le programme est réécrit en PHP, mais les cartes, les sprites, la police,
+						l'écran de chargement, les musiques et les bruitages viennent de la disquette Amstrad CPC de 1989.</p>
+				</details>
+				<details>
+					<summary>Les scores sont-ils sauvegardés ?</summary>
+					<p>Le meilleur score et les options (volume, langue) restent dans votre navigateur.</p>
+				</details>
+				<details>
+					<summary>Peut-on y jouer hors du navigateur ?</summary>
+					<p>Oui : avec le code source et Docker, <code>bin/jumphp run rainbow-island</code> ouvre le jeu dans
+						une fenêtre, avec le son. Voir le <a href="https://github.com/davidnurdin/rainbow-island">dépôt GitHub</a>.</p>
+				</details>
+			</div>
+		</section>
+	</main>
+
+	<div class="stripe"></div>
+	<footer>
+		<div class="wrap">
+			<p>Remake de fan, gratuit et sans publicité, fait avec <a href="https://github.com/davidnurdin/jumPhp">JumPHP</a>.</p>
+			<p>Rainbow Islands © Taito Corporation 1987 ; version Amstrad CPC © Graftgold 1989, éditée par Ocean.
+				Ce projet n'est affilié à aucune de ces sociétés ; les graphismes et la musique appartiennent à leurs auteurs.</p>
+		</div>
+	</footer>
+</body>
+</html>

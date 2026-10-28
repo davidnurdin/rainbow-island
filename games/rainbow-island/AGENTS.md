@@ -1,6 +1,7 @@
 # rainbow-island — notes for agents
 
-This game is built with JumPHP. **Read `../../AGENTS.md` first** (rules, commands, API).
+This game is built with JumPHP. **Read `../../AGENTS.md` first** (rules, commands, API). The example games it
+mentions (pong, jumpball, hello-*) were removed from this repository: they are in https://github.com/davidnurdin/jumPhp.
 
 ## Checklist
 
@@ -31,6 +32,8 @@ bin/jumphp build rainbow-island && bin/jumphp webshot rainbow-island 13 '[[3,"En
 - **Controls** (`config/input.yaml`): arrows walk, Up / Z / W jump, Space / X / Ctrl rainbow, P / Escape pause. Phones: a floating joystick (game.yaml `touch: pad: stick`) + RAINBOW / JUMP buttons.
 - **Smoke test**: `PlayScene` with `demo: true` (a bot walks, fires, jumps; restarts on game over).
   Test params: `round` (1-28), `arena` (start at the goal: on a 4th round, in front of the boss).
+- **Web site**: `site/` (landing page, SEO, `{{DOMAIN}}` replaced by `bin/jumphp deploy`), the game served in
+  `/play/`. Pictures: `tools/site/shots.sh` (screenshots + `make-images.py`, which also writes `assets/icon.png`).
 - **Non-obvious**:
   - The distance signs (1, 2, 3, G) are part of the map tiles: do not draw them.
   - Enemy kinds by object type and which ones fly come partly from observation in the emulator, partly
