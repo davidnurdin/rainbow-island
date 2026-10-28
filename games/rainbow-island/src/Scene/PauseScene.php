@@ -2,15 +2,17 @@
 
 namespace App\Scene;
 
+use App\Arcade\ArcadeFont;
 use JumPHP\Ui\MenuScene;
 
 /**
- * Pause menu, pushed over the game: isOverlay() keeps the frozen game visible under it.
+ * Pause menu, pushed over the round (P / Escape / Start, or when the window loses the focus).
  */
 final class PauseScene extends MenuScene
 {
     protected string $title = 'PAUSE';
     protected float $titleScale = 2.0;
+    protected array $titleColor = ArcadeFont::YELLOW;
     protected float $menuTop = 0.5;
 
     public function isOverlay(): bool
@@ -22,6 +24,7 @@ final class PauseScene extends MenuScene
     {
         return [
             ['RESUME', null, fn () => $this->scenes()->pop()],
+            ['OPTIONS', null, fn () => $this->scenes()->push(OptionsScene::class, ['overlay' => true])],
             ['TITLE SCREEN', null, fn () => $this->scenes()->switchTo(TitleScene::class)],
         ];
     }

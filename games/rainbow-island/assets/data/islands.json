@@ -1,0 +1,507 @@
+[
+ {
+  "name": "INSECT ISLAND",
+  "solidFrom": 64,
+  "palette": [
+   "#000000",
+   "#000080",
+   "#808080",
+   "#ffffff",
+   "#ff0000",
+   "#ff8000",
+   "#ffff80",
+   "#00ff00",
+   "#0080ff",
+   "#8000ff",
+   "#800080",
+   "#00ffff",
+   "#ff8080",
+   "#800000",
+   "#008000",
+   "#000000"
+  ],
+  "enemies": {
+   "68": {
+    "frames": [
+     16,
+     17
+    ],
+    "flies": false
+   },
+   "69": {
+    "frames": [
+     16,
+     17
+    ],
+    "flies": false
+   },
+   "70": {
+    "frames": [
+     18,
+     19
+    ],
+    "flies": true
+   },
+   "72": {
+    "frames": [
+     20
+    ],
+    "flies": false
+   },
+   "74": {
+    "frames": [
+     21,
+     22
+    ],
+    "flies": false
+   },
+   "75": {
+    "frames": [
+     23,
+     24
+    ],
+    "flies": false
+   },
+   "76": {
+    "frames": [
+     25,
+     26
+    ],
+    "flies": true
+   }
+  },
+  "bossFrame": 27,
+  "bossMirrored": true
+ },
+ {
+  "name": "COMBAT ISLAND",
+  "solidFrom": 82,
+  "palette": [
+   "#000000",
+   "#000080",
+   "#808080",
+   "#ffffff",
+   "#ff0000",
+   "#ff8000",
+   "#ffff80",
+   "#00ff00",
+   "#0080ff",
+   "#8000ff",
+   "#800080",
+   "#00ffff",
+   "#ff8080",
+   "#800000",
+   "#008000",
+   "#000000"
+  ],
+  "enemies": {
+   "68": {
+    "frames": [
+     16,
+     17
+    ],
+    "flies": false
+   },
+   "70": {
+    "frames": [
+     18,
+     19
+    ],
+    "flies": false
+   },
+   "72": {
+    "frames": [
+     20,
+     21
+    ],
+    "flies": false
+   },
+   "74": {
+    "frames": [
+     24
+    ],
+    "flies": false
+   },
+   "76": {
+    "frames": [
+     22,
+     23
+    ],
+    "flies": true
+   },
+   "78": {
+    "frames": [
+     25,
+     26
+    ],
+    "flies": true
+   },
+   "80": {
+    "frames": [
+     27,
+     28
+    ],
+    "flies": false
+   }
+  },
+  "bossFrame": 28,
+  "bossMirrored": false
+ },
+ {
+  "name": "MONSTER ISLAND",
+  "solidFrom": 80,
+  "palette": [
+   "#000000",
+   "#000080",
+   "#808080",
+   "#ffffff",
+   "#ff0000",
+   "#ff8000",
+   "#ffff80",
+   "#00ff00",
+   "#0080ff",
+   "#8000ff",
+   "#800080",
+   "#00ffff",
+   "#ff8080",
+   "#800000",
+   "#008000",
+   "#000000"
+  ],
+  "enemies": {
+   "68": {
+    "frames": [
+     19,
+     20
+    ],
+    "flies": true
+   },
+   "70": {
+    "frames": [
+     16,
+     17
+    ],
+    "flies": false
+   },
+   "72": {
+    "frames": [
+     21,
+     22
+    ],
+    "flies": false
+   },
+   "74": {
+    "frames": [
+     18
+    ],
+    "flies": false
+   },
+   "76": {
+    "frames": [
+     19,
+     20
+    ],
+    "flies": true
+   },
+   "78": {
+    "frames": [
+     23
+    ],
+    "flies": false
+   },
+   "80": {
+    "frames": [
+     25,
+     26
+    ],
+    "flies": false
+   }
+  },
+  "bossFrame": 25,
+  "bossMirrored": false
+ },
+ {
+  "name": "TOY ISLAND",
+  "solidFrom": 33,
+  "palette": [
+   "#000000",
+   "#000080",
+   "#808080",
+   "#ffffff",
+   "#ff0000",
+   "#ff8000",
+   "#ffff80",
+   "#00ff00",
+   "#0080ff",
+   "#8000ff",
+   "#800080",
+   "#00ffff",
+   "#ff8080",
+   "#800000",
+   "#008000",
+   "#000000"
+  ],
+  "enemies": {
+   "68": {
+    "frames": [
+     17
+    ],
+    "flies": false
+   },
+   "70": {
+    "frames": [
+     16
+    ],
+    "flies": false
+   },
+   "72": {
+    "frames": [
+     27
+    ],
+    "flies": true
+   },
+   "74": {
+    "frames": [
+     27
+    ],
+    "flies": true
+   },
+   "76": {
+    "frames": [
+     28
+    ],
+    "flies": false
+   },
+   "78": {
+    "frames": [
+     18,
+     19,
+     20,
+     21
+    ],
+    "flies": false
+   },
+   "80": {
+    "frames": [
+     22,
+     23,
+     24,
+     25
+    ],
+    "flies": false
+   }
+  },
+  "bossFrame": 16,
+  "bossMirrored": false
+ },
+ {
+  "name": "DOH'S ISLAND",
+  "solidFrom": 62,
+  "palette": [
+   "#000000",
+   "#000080",
+   "#808080",
+   "#ffffff",
+   "#ff0000",
+   "#ff8000",
+   "#ffff80",
+   "#00ff00",
+   "#0080ff",
+   "#8000ff",
+   "#800080",
+   "#00ffff",
+   "#ff8080",
+   "#800000",
+   "#008000",
+   "#000000"
+  ],
+  "enemies": {
+   "68": {
+    "frames": [
+     16
+    ],
+    "flies": true
+   },
+   "70": {
+    "frames": [
+     17,
+     18,
+     19,
+     20
+    ],
+    "flies": false
+   },
+   "72": {
+    "frames": [
+     21
+    ],
+    "flies": true
+   },
+   "74": {
+    "frames": [
+     22,
+     23,
+     24,
+     25
+    ],
+    "flies": false
+   },
+   "76": {
+    "frames": [
+     26,
+     27
+    ],
+    "flies": false
+   }
+  },
+  "bossFrame": 16,
+  "bossMirrored": false
+ },
+ {
+  "name": "ROBOT ISLAND",
+  "solidFrom": 85,
+  "palette": [
+   "#000000",
+   "#000080",
+   "#808080",
+   "#ffffff",
+   "#ff0000",
+   "#ff8000",
+   "#ffff80",
+   "#00ff00",
+   "#0080ff",
+   "#8000ff",
+   "#800080",
+   "#00ffff",
+   "#ff8080",
+   "#800000",
+   "#008000",
+   "#000000"
+  ],
+  "enemies": {
+   "68": {
+    "frames": [
+     16,
+     17
+    ],
+    "flies": false
+   },
+   "70": {
+    "frames": [
+     16,
+     17
+    ],
+    "flies": false
+   },
+   "72": {
+    "frames": [
+     19
+    ],
+    "flies": true
+   },
+   "74": {
+    "frames": [
+     20,
+     21
+    ],
+    "flies": false
+   },
+   "76": {
+    "frames": [
+     22,
+     23
+    ],
+    "flies": false
+   },
+   "78": {
+    "frames": [
+     18
+    ],
+    "flies": true
+   },
+   "80": {
+    "frames": [
+     25,
+     26
+    ],
+    "flies": false
+   }
+  },
+  "bossFrame": 16,
+  "bossMirrored": false
+ },
+ {
+  "name": "DRAGON ISLAND",
+  "solidFrom": 26,
+  "palette": [
+   "#000000",
+   "#000080",
+   "#808080",
+   "#ffffff",
+   "#ff0000",
+   "#ff8000",
+   "#ffff80",
+   "#00ff00",
+   "#0080ff",
+   "#8000ff",
+   "#800080",
+   "#00ffff",
+   "#ff8080",
+   "#800000",
+   "#008000",
+   "#000000"
+  ],
+  "enemies": {
+   "68": {
+    "frames": [
+     16,
+     17
+    ],
+    "flies": false
+   },
+   "70": {
+    "frames": [
+     18,
+     19
+    ],
+    "flies": false
+   },
+   "72": {
+    "frames": [
+     18,
+     19
+    ],
+    "flies": false
+   },
+   "74": {
+    "frames": [
+     18,
+     19
+    ],
+    "flies": false
+   },
+   "76": {
+    "frames": [
+     20
+    ],
+    "flies": true
+   },
+   "78": {
+    "frames": [
+     21,
+     22
+    ],
+    "flies": false
+   },
+   "80": {
+    "frames": [
+     25,
+     26
+    ],
+    "flies": false
+   }
+  },
+  "bossFrame": 27,
+  "bossMirrored": true
+ }
+]

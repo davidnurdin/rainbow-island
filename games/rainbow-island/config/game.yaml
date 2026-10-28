@@ -1,17 +1,23 @@
 # The game. Every key is optional (defaults: JumPHP\Kernel\GameConfig::DEFAULTS).
 game:
-  id: rainbow-island                  # lower case, unique: folder of the games portal, network room filter
-  title: "rainbow island"
-  version: 0.1.0
-  description: "Rainbow Island"
-  width: 320                    # virtual resolution (pixels of the game, scaled to the window)
-  height: 240
-  scale: 3                      # desktop window = 960 x 540
-  background: [16, 16, 32]
-  start_scene: App\Scene\TitleScene
-  lang: fr
-  net_url: ws://localhost:8090/ws   # relay server (bin/jumphp relay up); the page can override with ?net=
+  id: rainbow-island
+  title: "RAINBOW ISLANDS"
+  version: 1.0.0
+  description: "The Amstrad CPC Rainbow Islands remade in PHP: 7 islands, 28 rounds, climb with rainbows before the water rises."
+  width: 256                    # the CPC screen of the original: 128 mode 0 pixels (2 pixels wide) x 176 lines
+  height: 176
+  scale: 4                      # desktop window = 1024 x 704
+  background: [0, 0, 0]
+  start_scene: App\Scene\LoadingScene
+  pause_scene: App\Scene\PauseScene
+  lang: en
   online: false
+  controls: "Arrows: walk - Up / Z: jump - Space / X: rainbow - P / Escape: pause"
+  touch:
+    a: Space
+    b: Z
+    start: Return
+    labels: { a: RAINBOW, b: JUMP }
   # what `bin/jumphp test` runs headless (no window), 600 frames = 10 s of game time
   smoke:
     scene: App\Scene\PlayScene

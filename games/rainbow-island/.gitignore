@@ -4,3 +4,6 @@
 /dist/
 /.build/
 /cache/
+/tools/extract/emulator/cpc
+/tools/extract/emulator/ay
+/tools/extract/__pycache__/

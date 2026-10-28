@@ -1,11 +1,13 @@
-# Translations: source strings (English) => other languages. Lang::t('PLAY'); Menu labels are translated.
+# Translations of the menus (the texts of the game itself stay as in the original, in English).
 fr:
   PLAY: JOUER
   OPTIONS: OPTIONS
   QUIT: QUITTER
+  PAUSE: PAUSE
   RESUME: REPRENDRE
   TITLE SCREEN: ECRAN TITRE
-  SOUND: SON
+  SOUND: BRUITAGES
+  MUSIC: MUSIQUE
   LANGUAGE: LANGUE
+  FULLSCREEN: PLEIN ECRAN
   BACK: RETOUR
-  COINS: PIECES
