@@ -28,7 +28,7 @@ bin/jumphp build rainbow-island && bin/jumphp webshot rainbow-island 13 '[[3,"En
   it and it falls, turning enemies into diamonds), `Enemy` (walkers / flyers), `Item`, `Boss`.
 - **Services**: `Arcade\Artwork` (all textures, sounds; call `boot()` in every scene's `enter()`), `Arcade\ArcadeFont`
   (the original font, 5 colour schemes), `Game\Session` (score, lives, round, diamonds), `Game\ScoreBoard`.
-- **Controls** (`config/input.yaml`): arrows walk, Up / Z / W jump, Space / X / Ctrl rainbow, P / Escape pause.
+- **Controls** (`config/input.yaml`): arrows walk, Up / Z / W jump, Space / X / Ctrl rainbow, P / Escape pause. Phones: a floating joystick (game.yaml `touch: pad: stick`) + RAINBOW / JUMP buttons.
 - **Smoke test**: `PlayScene` with `demo: true` (a bot walks, fires, jumps; restarts on game over).
   Test params: `round` (1-28), `arena` (start at the goal: on a 4th round, in front of the boss).
 - **Non-obvious**:

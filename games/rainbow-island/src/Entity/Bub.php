@@ -26,6 +26,8 @@ final class Bub extends Entity
     private const PROBES = [8, 16];
 
     public bool $onGround = true;
+    /** Standing on a rainbow: the walls of the tiles do not stop him there (the arc goes over them). */
+    public bool $onRainbow = false;
     /** In the air because of a jump: landing on a rainbow then breaks it. */
     public bool $jumping = false;
     public float $invulnerable = 0.0;
@@ -89,7 +91,7 @@ final class Bub extends Entity
         // across: the edges of the playfield, and walls when he walks on the ground
         $x = max(0.0, min(Round::WIDTH - self::SIZE, $this->x + $this->vx * $dt));
         $front = $move > 0 ? $x + self::PROBES[1] + 2 : $x + self::PROBES[0] - 2;
-        if (!($this->onGround && $move !== 0 && $terrain->isWall($front, $this->feet()))) {
+        if (!($this->onGround && !$this->onRainbow && $move !== 0 && $terrain->isWall($front, $this->feet()))) {
             $this->x = $x;
         }
 
@@ -120,7 +122,8 @@ final class Bub extends Entity
                 $this->y += $fall;
             }
         }
-        if ($this->onGround && $terrain->lastRainbow === null) {
+        $this->onRainbow = $this->onGround && $terrain->lastRainbow !== null;
+        if ($this->onGround && !$this->onRainbow) {
             $this->safeSpot = [$this->x, $this->y];
         }
         return $event;
@@ -165,6 +168,7 @@ final class Bub extends Entity
         [$this->x, $this->y] = $this->safeSpot;
         $this->state = 'alive';
         $this->onGround = true;
+        $this->onRainbow = false;
         $this->jumping = false;
         $this->vy = 0;
         $this->invulnerable = 2.5;

@@ -13,7 +13,8 @@ game:
   lang: en
   online: false
   controls: "Arrows: walk - Up / Z: jump - Space / X: rainbow - P / Escape: pause"
-  touch:
+  touch:                        # phones: a floating joystick on the left half of the screen, two buttons on the right
+    pad: stick
     a: Space
     b: Z
     start: Return

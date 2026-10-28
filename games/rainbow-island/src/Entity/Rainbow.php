@@ -9,7 +9,7 @@ use JumPHP\Renderer\Renderer;
 
 /**
  * A rainbow fired by Bub: a 48 x 32 arc of overlay tiles. While it grows it knocks out the enemies it
- * sweeps; once grown it is a bridge to walk on. Landing on it from a jump breaks it: it falls and
+ * sweeps, and the part already drawn is a bridge to walk on. Landing on it from a jump breaks it: it falls and
  * knocks out everything below. It fades away after a few seconds.
  */
 final class Rainbow extends Entity
@@ -78,12 +78,19 @@ final class Rainbow extends Entity
      */
     public function surfaceAt(float $x): ?float
     {
-        if ($this->state !== 'solid') {
+        if ($this->state === 'falling') {
             return null;
         }
         $local = (int)floor($x - $this->x);
         if ($local < 0 || $local >= self::WIDTH) {
             return null;
+        }
+        // while it grows, only the part already drawn holds (Bub walking on climbs it as it appears)
+        if ($this->state === 'growing') {
+            $grown = $this->age / self::GROW_TIME * self::WIDTH;
+            if ($this->facing === 'right' ? $local >= $grown : $local < self::WIDTH - $grown) {
+                return null;
+            }
         }
         $ramp = 8;
         $edge = min($local, self::WIDTH - 1 - $local);
