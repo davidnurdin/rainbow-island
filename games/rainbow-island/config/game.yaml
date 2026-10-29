@@ -4,6 +4,9 @@ game:
   title: "RAINBOW ISLANDS"
   version: 1.0.0
   description: "The Amstrad CPC Rainbow Islands remade in PHP: 7 islands, 28 rounds, climb with rainbows before the water rises."
+  descriptions:                 # the description in the playground's languages (jumphp.net shows the visitor's)
+    fr: "Le Rainbow Islands de l'Amstrad CPC refait en PHP : 7 îles, 28 rounds, grimpez avec vos arcs-en-ciel avant que l'eau ne monte."
+    en: "The Amstrad CPC Rainbow Islands remade in PHP: 7 islands, 28 rounds, climb with rainbows before the water rises."
   width: 256                    # the CPC screen of the original: 128 mode 0 pixels (2 pixels wide) x 176 lines
   height: 176
   scale: 4                      # desktop window = 1024 x 704
